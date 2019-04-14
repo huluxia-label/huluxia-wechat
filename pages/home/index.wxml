@@ -1,0 +1,25 @@
+<view class="content-wrap">
+  <include src="../../templates/topbar"></include>
+  <view class="cu-list menu list-top bg-white">
+    <view data-url="{{item.url}}" bindtap="goTo" class="cu-item padding margin" wx:for="{{item}}">
+      <view class="content">
+        <text class="cu-avatar" style="background-image:url({{item.icon}})"></text>
+        <text class="text-gray padding-left">{{item.title}}</text>
+      </view>
+      <view class="action">
+        <text class="icon-right text-gray"></text>
+      </view>
+    </view>
+    <view class="cu-item padding margin">
+      <view class="content">
+        <text class="cu-avatar" style="background-image:url(https://img.icons8.com/dusk/64/000000/idea.png)"></text>
+        <text class="text-gray padding-left">切换主题</text>
+      </view>
+      <view class="action">
+        <switch class="" type="switch" bindchange=""></switch>
+      </view>
+    </view>
+  </view>
+</view>
+
+<include src="../../templates/footer"></include>

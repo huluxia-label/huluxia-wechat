@@ -1,0 +1,51 @@
+<view class="content-wrap" hover-class="none" hover-stop-propagation="false">
+  <include src="../../templates/topbar"></include>
+  <scroll-view class="event-wrap">
+    <view class="padding-sm flex hotWrap" data-id="{{hot.postID}}" bindtap="postInfo" hover-class="none" hover-stop-propagation="false">
+      <view class="flex-sub bg-orange">
+        <view data-img="{{hot.images.length >= 1 ? hot.images[0] : ''}}" catchtap="zoomIMG" class="hot-img radius lg shadow-blur"
+          style="background-image: url('{{hot.images.length >= 1 ? hot.images[0] : ''}}')">
+        </view>
+      </view>
+      <view class="flex-treble padding-left por hotWrap2">
+        <view class="content text-xl text-cut">
+          <text class="hotScore bg-red text-white">+{{hot.score}}</text>
+          {{hot.title}}
+        </view>
+        <view class="content text-sm text-cut">
+          {{hot.detail}}
+        </view>
+        <view class="content hotBar padding-left flex">
+          <view class="flex-sub text-cut" selectable="false" space="false" decode="false">
+            <text class="icon-titles text-orange"></text> {{hot.user.nick}}
+          </view>
+          <view class="flex-twice text-right">
+            {{hot.activeTime}}
+            <text class="icon-male text-orange"></text>
+            {{hot.hit}}
+            <text class="icon-comment text-orange"></text>
+            {{hot.commentCount}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="cu-bar">
+      <view class="action sub-title" hover-class="none" hover-stop-propagation="false">
+        <text class="text-xl text-bold text-green">我的板块</text>
+        <text class="bg-green"></text>
+      </view>
+    </view>
+    <view class="flex padding-left padding-right padding-top" wx:for="{{fList}}" wx:for-item="item">
+      <view bindtap="tapID" class="flex-sub padding radius shadow-blur bg-{{item.color}}" data-id="{{item.categoryID}}">
+        <view class="action">
+          <image class="list-logo shadow-lg" src="{{item.icon}}" mode="aspectFit" lazy-load="true"/>
+          <text class="content padding-left"><text class="text-bold">{{item.title}}</text> 🔥 {{item.viewCountFormated}} 🌸 {{item.postCountFormated}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+<!-- 引入组件 -->
+<include src="../../templates/footer.wxml"></include>
+<zoom-wrap url="{{imgURL}}" event="{{imgStatus}}"></zoom-wrap>

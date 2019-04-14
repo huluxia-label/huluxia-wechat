@@ -1,0 +1,7 @@
+.list-top {
+  padding-top: 160rpx;
+}
+.cu-avatar {
+  background: transparent;
+  background-size: 100%;
+}

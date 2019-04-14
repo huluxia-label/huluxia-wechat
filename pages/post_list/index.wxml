@@ -1,0 +1,82 @@
+<scroll-view class="content-wrap">
+  <view class="diy-bar sm bg-gradual-purple">
+    <view class="cu-bar">
+      <view class="action" bindtap="backTo"><text class="icon-back"></text>返回</view>
+      <view class="content">
+        {{data.category.title}}
+      </view>
+    </view>
+  </view>
+  <view class="event-wrap sm">
+    <view class="cu-list menu-avatar">
+      <view class="cu-item">
+        <view class="cu-avatar round lg" style="background-image: url('{{data.category.icon}}')"></view>
+        <view class="content">
+          <text class="text-orange">热度: {{data.category.viewCountFormated}} 话题: {{data.category.postCountFormated}}</text>
+          <text class="text-cut">{{data.category.description}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="flex bg-white text-center solid-top solid-bottom">
+      <view class="flex-sub padding solid-right">
+        <text class="icon-evaluate"></text>
+        达人堂
+      </view>
+      <view class="flex-sub padding">
+        <text class="icon-search"></text>
+        搜索
+      </view>
+    </view>
+
+    <view class="margin-top-sm padding-sm bg-white cu-list menu">
+      <view class="solid-bottom cu-item" data-id="{{item.postID}}" bindtap="postInfo" wx:for="{{data.weightAndTopPost}}" wx:for-item="item">
+        <view class="content text-cut"><text class="upText">置顶</text>{{item.title}}</view>
+      </view>
+    </view>
+
+    <scroll-view scroll-x="{{true}}" class="bg-gradual-green nav">
+      <block wx:for="{{data.category.tags}}" wx:for-item="item">
+        <view class="cu-item" data-id="{{item.ID}}">{{item.name}}</view>
+      </block>
+    </scroll-view>
+    <scroll-view class="padding-sm">
+      <block wx:for="{{data.posts}}" wx:for-item="item">
+        <view data-id="{{item.postID}}" bindtap="postInfo" class="margin-top-xs solid-bottom padding-bottom"  hover-class="none" hover-stop-propagation="false">
+          <view class="item-title text-lg">
+            <text class="radius bg-red padding-left-xs padding-right-xs text-sm">+{{item.score}}</text>
+            {{item.title}}
+          </view>
+          <view class="text-sm text-gray" style="height: 15vh;overflow:hidden;">
+            <text class="" selectable="false" space="false" decode="false">
+               {{item.detail}}
+            </text>
+          </view>
+          <view class="flex por" hidden="{{!(item.images.length >= 1)}}">
+            <block wx:if="{{item.images.length >= 3}}">
+              <view class="flex-sub"   wx:for="{{[0,1,2]}}" wx:for-item="ev">
+                <image class="v-img" catchtap="zoom" data-img="{{item.images[ev]}}" src="{{item.images[ev]}}" mode="widthFix"></image>
+              </view>
+            </block>
+            <block wx:else>
+              <view class="flex-sub"  src="{{item.images[0]}}">
+                <image class="v-img" catchtap="zoom" data-img="{{item.images[0]}}" mode="widthFix"></image>
+              </view>
+            </block>
+            <text class="img-length">{{item.images.length}}</text>
+          </view>
+          <view class="flex text-gray text-sm">
+            <view class="flex-sub">{{item.user.nick}}</view>
+            <view class="flex-sub text-right">
+              <text>{{item.activeTime}}</text>
+              <text>
+                <text class="icon-male"></text>{{item.hit}} <text class="icon-comment"></text> {{item.commentCount}}
+              </text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</scroll-view>
+<include src="../../templates/footer.wxml"></include>
+<zoom-wrap url="{{imgURL}}" event="{{imgStatus}}"></zoom-wrap>

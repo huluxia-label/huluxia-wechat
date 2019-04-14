@@ -1,0 +1,40 @@
+.db {
+  position: fixed;
+  top:0;
+  left: 0;
+  display: table;
+  z-index: 9989;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255,255,255,.8);
+  text-align: center;
+}
+.dtc {
+  display: table-cell;
+  vertical-align: middle;
+}
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(30rpx);
+  opacity: 0.9;
+  z-index: -1;
+}
+.down {
+  position: fixed;
+  bottom: 40rpx;
+  left: 0;
+  width: 100vw;
+  text-align: center;
+  z-index: 9999;
+}
+.down button {
+  margin: 0 42rpx;
+  background: linear-gradient(45deg, #ec008c, #6739b6);
+  color: #fff;
+}
